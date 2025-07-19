@@ -33,7 +33,7 @@ type TemplateColumnProps<T extends string> = {
 }
 
 export const TemplateColumn = <T extends string>({ column, onChange, onSubChange }: TemplateColumnProps<T>) => {
-  const { translations, fields } = useRsi<T>()
+  const { translations, fields, onManageFields } = useRsi<T>()
   const styles = useStyleConfig("MatchColumnsStep") as Styles
   const isIgnored = column.type === ColumnType.ignored
   const isChecked =
@@ -42,6 +42,13 @@ export const TemplateColumn = <T extends string>({ column, onChange, onSubChange
     column.type === ColumnType.matchedSelectOptions
   const isSelect = "matchedOptions" in column
   const selectOptions = fields.map(({ label, key }) => ({ value: key, label }))
+
+  if (!!onManageFields) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    selectOptions.push({ value: "new", label: "+ add new column" })
+  }
+
   const selectValue = selectOptions.find(({ value }) => "value" in column && column.value === value)
 
   return (
@@ -55,7 +62,13 @@ export const TemplateColumn = <T extends string>({ column, onChange, onSubChange
               <MatchColumnSelect
                 placeholder={translations.matchColumnsStep.selectPlaceholder}
                 value={selectValue}
-                onChange={(value) => onChange(value?.value as T, column.index)}
+                onChange={(value) => {
+                  if (value?.value === "new") {
+                    onManageFields()
+                  } else {
+                    onChange(value?.value as T, column.index)
+                  }
+                }}
                 options={selectOptions}
                 name={column.header}
               />

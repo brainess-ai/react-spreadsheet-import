@@ -25,20 +25,22 @@ export const ColumnGrid = <T extends string>({
   onBack,
   isLoading,
 }: ColumnGridProps<T>) => {
-  const { translations } = useRsi()
+  const { translations, onManageFields } = useRsi()
   const styles = useStyleConfig("MatchColumnsStep") as Styles
 
   return (
     <>
       <ModalBody flexDir="column" p={8} overflow="auto">
-        <Heading sx={styles.heading}>{translations.matchColumnsStep.title}</Heading>
+        <Box sx={{ display: "flex", gap: "24px" }}>
+          <Heading sx={styles.heading}>{translations.matchColumnsStep.title}</Heading>
+          {onManageFields && <Button onClick={onManageFields}>Manage columns</Button>}
+        </Box>
         <Flex
           flex={1}
           display="grid"
           gridTemplateRows="auto auto auto 1fr"
           gridTemplateColumns={`0.75rem repeat(${columns.length}, minmax(18rem, auto)) 0.75rem`}
         >
-          <Button>AAAAA</Button>
           <Box gridColumn={`1/${columns.length + 3}`}>
             <Text sx={styles.title}>{translations.matchColumnsStep.userTableTitle}</Text>
           </Box>
