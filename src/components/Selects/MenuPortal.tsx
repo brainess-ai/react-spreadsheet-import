@@ -52,6 +52,7 @@ const MenuPortal = (props: PortalProps) => {
   if (wrapperElement === null) return null
 
   return ReactDOM.createPortal(
+    // @ts-ignore
     <Box
       dir={rtl ? "rtl" : "ltr"}
       ref={popperRef}

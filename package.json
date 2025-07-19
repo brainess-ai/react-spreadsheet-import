@@ -1,5 +1,5 @@
 {
-  "name": "react-spreadsheet-import",
+  "name": "@brainess-ai/react-spreadsheet-import",
   "version": "4.7.1",
   "description": "React spreadsheet import for xlsx and csv files with column matching and validation",
   "main": "./dist-commonjs/index.js",
@@ -24,11 +24,8 @@
     "release:patch": "git checkout master && git pull && npm run test:unit && npm run ts && npm run build && npm version patch && git add -A && git push && git push --tags && npm publish",
     "release:minor": "git checkout master && git pull && npm run test:unit && npm run ts && npm run build && npm version minor && git add -A && git push && git push --tags && npm publish",
     "release:major": "git checkout master && git pull && npm run test:unit && npm run ts && npm run build && npm version major && git add -A && git push && git push --tags && npm publish",
-    "clean": "rimraf dist dist-commonjs types"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/UgnisSoftware/react-spreadsheet-import.git"
+    "clean": "rimraf dist dist-commonjs types",
+    "release": "yarn clean && yarn ts && yarn build && npm publish"
   },
   "keywords": [
     "React",
@@ -45,10 +42,6 @@
     "name": "Ugnis"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/UgnisSoftware/react-spreadsheet-import/issues"
-  },
-  "homepage": "https://github.com/UgnisSoftware/react-spreadsheet-import#readme",
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
@@ -66,7 +59,11 @@
     "react-dropzone": "14.2.3",
     "react-icons": "4.11.0",
     "uuid": "^9.0.1",
-    "xlsx-ugnis": "0.20.3"
+    "xlsx-ugnis": "0.20.3",
+    "@chakra-ui/icon": "^3.2.0",
+    "@chakra-ui/popper": "^3.1.0",
+    "@chakra-ui/react-context": "^2.1.0",
+    "@chakra-ui/system": "^2.6.2"
   },
   "devDependencies": {
     "@babel/core": "7.23.2",
@@ -122,7 +119,16 @@
     "typescript-transform-paths": "3.4.6"
   },
   "overrides": {
-    "semver": "^7.5.3"
+    "semver": "^7.5.3",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4"
+  },
+  "resolutions": {
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint",

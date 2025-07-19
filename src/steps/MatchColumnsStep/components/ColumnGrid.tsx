@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Column, Columns } from "../MatchColumnsStep"
-import { Box, Flex, Heading, ModalBody, Text, useStyleConfig } from "@chakra-ui/react"
+import { Box, Button, Flex, Heading, ModalBody, Text, useStyleConfig } from "@chakra-ui/react"
 import { FadingWrapper } from "../../../components/FadingWrapper"
 import { ContinueButton } from "../../../components/ContinueButton"
 import { useRsi } from "../../../hooks/useRsi"
@@ -38,6 +38,7 @@ export const ColumnGrid = <T extends string>({
           gridTemplateRows="auto auto auto 1fr"
           gridTemplateColumns={`0.75rem repeat(${columns.length}, minmax(18rem, auto)) 0.75rem`}
         >
+          <Button>AAAAA</Button>
           <Box gridColumn={`1/${columns.length + 3}`}>
             <Text sx={styles.title}>{translations.matchColumnsStep.userTableTitle}</Text>
           </Box>
