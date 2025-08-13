@@ -1,5 +1,5 @@
 {
-  "name": "@brainess-ai/react-spreadsheet-import",
+  "name": "@brainess/react-spreadsheet-import",
   "version": "4.7.2",
   "description": "React spreadsheet import for xlsx and csv files with column matching and validation",
   "main": "./dist-commonjs/index.js",
@@ -126,9 +126,6 @@
   "resolutions": {
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
   },
   "lint-staged": {
     "*.{ts,tsx}": "eslint",
